@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "cc5b9c4a-8cc5-4a41-aa58-3d373db29860",
+		"name": "本地 - Meta Wall",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "取得所有貼文",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"keyword\": \"1\",\n    \"timeSort\": \"asc\",\n    \"limit\": 10,\n    \"page\": 1 \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3005/api/posts",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得指定 user 所有貼文",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"keyword\": \"1\",\n    \"timeSort\": \"asc\",\n    \"limit\": 10,\n    \"page\": 1 \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3005/api/posts/user/627fa403e11fff95efe0cde6",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"posts",
+						"user",
+						"627fa403e11fff95efe0cde6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得指定 post 貼文",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3005/api/post/6283b4f8aca2110b67a7414e",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"post",
+						"6283b4f8aca2110b67a7414e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增貼文",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"627fa403e11fff95efe0cde6\",\n    \"content\": \"test\",\n    \"image\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3005/api/post",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增指定貼文內留言",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"627fa403e11fff95efe0cde6\",\n    \"comment\": \"test-comment\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3005/api/post/6283b4f8aca2110b67a7414e/comments",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"post",
+						"6283b4f8aca2110b67a7414e",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "修改指定貼文",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\": \"test-123\",\n    \"image\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3005/api/post/6283b4f8aca2110b67a7414e",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"post",
+						"6283b4f8aca2110b67a7414e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "修改指定貼文按讚數",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"627fa403e11fff95efe0cde6\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3005/api/post/6283b4f8aca2110b67a7414e/likes",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"post",
+						"6283b4f8aca2110b67a7414e",
+						"likes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除指定貼文",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3005/api/post/6283b4f8aca2110b67a7414e",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"post",
+						"6283b4f8aca2110b67a7414e"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
