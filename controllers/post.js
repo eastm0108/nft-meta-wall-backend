@@ -12,7 +12,7 @@ const post = {
     async getPosts(req, res, next) {
         // 取得指定 userId
         const { id: userId } = req.params;
-        let { keyword, timeSort, limit = 10, page = 1 } = req.body;
+        let { keyword, timeSort, limit = 10, page = 1 } = req.query;
 
         if (
             checkType(typeof keyword, ['object', 'number', 'symbol', 'boolean'])
@@ -31,14 +31,14 @@ const post = {
             ));
         }
 
-        if (!checkType(typeof limit, ['number', 'undefined'])) {
+        if (!checkType(typeof limit, ['string', 'number']) || isNaN(+limit) || limit <= 0) {
             return next(appError(
                 HTTP_STATUS.BAD_REQUEST,
                 ERROR_MESSAGE('ERROR_REQUEST', 'limit 錯誤'),
             ));
         }
 
-        if (!checkType(typeof page, ['number', 'undefined'])) {
+        if (!checkType(typeof page, ['string', 'number']) || isNaN(+page) || page <= 0) {
             return next(appError(
                 HTTP_STATUS.BAD_REQUEST,
                 ERROR_MESSAGE('ERROR_REQUEST', 'page 錯誤'),

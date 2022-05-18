@@ -15,7 +15,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"keyword\": \"1\",\n    \"timeSort\": \"asc\",\n    \"limit\": 10,\n    \"page\": 1 \n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -23,7 +23,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://hidden-waters-28649.herokuapp.com/api/posts",
+					"raw": "https://hidden-waters-28649.herokuapp.com/api/posts?keyword=1&timeSort=asc&limit=10&page=1",
 					"protocol": "https",
 					"host": [
 						"hidden-waters-28649",
@@ -33,6 +33,24 @@
 					"path": [
 						"api",
 						"posts"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "1"
+						},
+						{
+							"key": "timeSort",
+							"value": "asc"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
 					]
 				}
 			},
@@ -48,7 +66,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"keyword\": \"1\",\n    \"timeSort\": \"asc\",\n    \"limit\": 10,\n    \"page\": 1 \n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -56,7 +74,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://hidden-waters-28649.herokuapp.com/api/posts/user/627fa403e11fff95efe0cde6",
+					"raw": "https://hidden-waters-28649.herokuapp.com/api/posts/user/627fa403e11fff95efe0cde6?keyword=1&timeSort=asc&limit=10&page=1",
 					"protocol": "https",
 					"host": [
 						"hidden-waters-28649",
@@ -68,6 +86,24 @@
 						"posts",
 						"user",
 						"627fa403e11fff95efe0cde6"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "1"
+						},
+						{
+							"key": "timeSort",
+							"value": "asc"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
 					]
 				}
 			},

@@ -15,7 +15,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"keyword\": \"1\",\n    \"timeSort\": \"asc\",\n    \"limit\": 10,\n    \"page\": 1 \n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -23,7 +23,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3005/api/posts",
+					"raw": "localhost:3005/api/posts?keyword=1&timeSort=asc&limit=10&page=1",
 					"host": [
 						"localhost"
 					],
@@ -31,6 +31,24 @@
 					"path": [
 						"api",
 						"posts"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "1"
+						},
+						{
+							"key": "timeSort",
+							"value": "asc"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
 					]
 				}
 			},
@@ -46,7 +64,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"keyword\": \"1\",\n    \"timeSort\": \"asc\",\n    \"limit\": 10,\n    \"page\": 1 \n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -54,7 +72,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3005/api/posts/user/627fa403e11fff95efe0cde6",
+					"raw": "localhost:3005/api/posts/user/627fa403e11fff95efe0cde6?keyword=1&timeSort=asc&limit=10&page=1",
 					"host": [
 						"localhost"
 					],
@@ -64,6 +82,24 @@
 						"posts",
 						"user",
 						"627fa403e11fff95efe0cde6"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "1"
+						},
+						{
+							"key": "timeSort",
+							"value": "asc"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
 					]
 				}
 			},
@@ -75,7 +111,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3005/api/post/6283b4f8aca2110b67a7414e",
+					"raw": "localhost:3005/api/post/6283b510aca2110b67a74160",
 					"host": [
 						"localhost"
 					],
@@ -83,7 +119,7 @@
 					"path": [
 						"api",
 						"post",
-						"6283b4f8aca2110b67a7414e"
+						"6283b510aca2110b67a74160"
 					]
 				}
 			},
