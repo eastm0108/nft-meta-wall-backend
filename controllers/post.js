@@ -84,7 +84,7 @@ const post = {
         const { id } = req.params;
         const post = await Post.findById(id);
 
-        successHandle(res, post)
+        successHandle(res, post, '成功取得單筆貼文')
     },
     /** 新增單筆貼文 */
     async addPost(req, res, next) {
