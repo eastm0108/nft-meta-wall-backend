@@ -61,6 +61,15 @@ const post = {
             select: 'name avatar',
         });
 
+        // 處理 comments 資料
+        await Post.populate(posts, {
+            path: 'comments',
+            populate: {
+                path: 'user',
+                select: 'name avatar',
+            },
+        });
+
         const resPosts = posts.map((item) => {
             return {
                 id: item._id,
@@ -84,6 +93,15 @@ const post = {
         const { id } = req.params;
         const post = await Post.findById(id);
 
+        // 處理 comments 資料
+        await Post.populate(post, {
+            path: 'comments',
+            populate: {
+                path: 'user',
+                select: 'name avatar',
+            },
+        });
+
         successHandle(res, post, '成功取得單筆貼文')
     },
     /** 新增單筆貼文 */
@@ -105,6 +123,7 @@ const post = {
         }
 
         const newPost = await Post.create({ author, content, image });
+
         successHandle(res, newPost, '新增貼文成功');
     },
     /** 新增指定貼文內留言 */
@@ -129,6 +148,15 @@ const post = {
         const postComment = { user: userId, comment };
         const post = await Post.findByIdAndUpdate(id, { $push: { comments: postComment } }, { returnDocument: 'after' })
 
+        // 處理 comments 資料
+        await Post.populate(post, {
+            path: 'comments',
+            populate: {
+                path: 'user',
+                select: 'name avatar',
+            },
+        });
+
         successHandle(res, post, '新增留言成功');
     },
     /** 修改指定貼文 */
@@ -144,6 +172,15 @@ const post = {
         }
 
         const post = await Post.findByIdAndUpdate(id, { content, image }, { returnDocument: 'after' });
+
+        // 處理 comments 資料
+        await Post.populate(post, {
+            path: 'comments',
+            populate: {
+                path: 'user',
+                select: 'name avatar',
+            },
+        });
 
         successHandle(res, post, '更新貼文內容成功')
     },
@@ -163,9 +200,18 @@ const post = {
         }
 
         const post = await Post.findByIdAndUpdate(id, { [method]: { likes: userId } }, { returnDocument: 'after' })
-    
+
+        // 處理 comments 資料
+        await Post.populate(post, {
+            path: 'comments',
+            populate: {
+                path: 'user',
+                select: 'name avatar',
+            },
+        });
+
         await LikesPost.findOneAndUpdate({ userId: userId }, { [method]: { posts: id } }, { returnDocument: 'after' })
-    
+
         successHandle(res, post, '更新成功')
     },
     /** 刪除單筆貼文 */
