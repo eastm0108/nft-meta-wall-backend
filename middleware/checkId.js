@@ -37,7 +37,8 @@ const checkUserId = async (req, res, next) => {
 
   next();
 }
+
 module.exports = {
   checkPostId,
-  checkUserId
+  checkUserId,
 }
