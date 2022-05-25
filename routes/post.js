@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const PostsControllers = require('../controllers/post');
 const { checkUserId, checkPostId } = require('../middleware/checkId');
+const { isAuth } = require('../middleware/auth');
 const { handleErrorAsync } = require('../middleware/handleErrorAsync');
 
 // 取得所有貼文

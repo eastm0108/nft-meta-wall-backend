@@ -122,7 +122,24 @@ const post = {
             ));
         }
 
-        const newPost = await Post.create({ author, content, image });
+        if (typeof content !== 'string' || content === '') {
+            return next(appError(
+                HTTP_STATUS.BAD_REQUEST,
+                ERROR_MESSAGE('ERROR_REQUEST', 'content 資料錯誤'),
+            ));
+        }
+
+        const user = await User.findById(author).exec();
+
+        // 檢查使用者存不存在
+        if (!user) {
+            return next(appError(
+                HTTP_STATUS.BAD_REQUEST,
+                ERROR_MESSAGE('NOT_FOUND_ID', '無此使用者資料錯誤'),
+            ));
+        }
+
+        const newPost = await Post.create({ author, content: content.trim(), image });
 
         successHandle(res, newPost, '新增貼文成功');
     },
@@ -171,7 +188,31 @@ const post = {
             ));
         }
 
-        const post = await Post.findByIdAndUpdate(id, { content, image }, { returnDocument: 'after' });
+        if (typeof content !== 'string' || content === '') {
+            return next(appError(
+                HTTP_STATUS.BAD_REQUEST,
+                ERROR_MESSAGE('ERROR_REQUEST', 'content 資料錯誤'),
+            ));
+        }
+
+        const findPost = await Post.findById(id);
+
+        if (!findPost || findPost?.author) {
+            return next(appError(
+                HTTP_STATUS.BAD_REQUEST,
+                ERROR_MESSAGE('NOT_FOUND_ID_OR_DATA_ERROR', '此篇貼文已不存在'),
+            ));
+        }
+
+        // 檢查修改者是否是貼文作者
+        // if (req.user.id !== findPost.author) {
+        //     return next(appError(
+        //         HTTP_STATUS.BAD_REQUEST,
+        //         ERROR_MESSAGE('ERROR_REQUEST', '無權限修改貼文'),
+        //     ));
+        // }
+
+        const post = await Post.findByIdAndUpdate(id, { content: content.trim(), image }, { returnDocument: 'after' });
 
         // 處理 comments 資料
         await Post.populate(post, {

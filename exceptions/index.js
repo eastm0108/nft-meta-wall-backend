@@ -66,12 +66,12 @@ const errorHandle = (err, req, res, next) => {
     err.statusCode = err.statusCode || 500;
 
     // dev
-    if (process.env.NODE_ENV === "dev") {
+    if (process.env.NODE_ENV === "development") {
         return resErrorDev(err, res);
     }
 
     // production
-    if (process.env.NODE_ENV === 'prod') {
+    if (process.env.NODE_ENV === 'production') {
         // Axios 錯誤
         err.isAxiosError && (err.name = 'AxiosError');
 
