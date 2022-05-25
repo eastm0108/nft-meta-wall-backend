@@ -6,6 +6,7 @@ const logger = require('morgan');
 const swaggerUI = require('swagger-ui-express');
 const swaggerFile = require('./swagger-output.json');
 
+
 // exceptions 錯誤處理
 const {
   uncaughtException,
@@ -14,13 +15,21 @@ const {
   error404,
 } = require("./exceptions");
 
+
 // router
 const postRouter = require('./routes/post');
+const userRouter = require('./routes/user');
 
+
+// app 實體
 const app = express();
+
+
 // db connection
 require('./connection');
 
+
+// middleware
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
@@ -28,12 +37,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // swagger
 app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
 
-// use router
+// use route
 app.use('/api', postRouter);
+app.use('/api/user', userRouter)
 
 
 // catch 404 and forward to error handler
