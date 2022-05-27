@@ -19,6 +19,7 @@ const {
 // router
 const postRouter = require('./routes/post');
 const userRouter = require('./routes/user');
+const imageRouter = require('./routes/image');
 
 
 // app 實體
@@ -44,7 +45,8 @@ app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
 // use route
 app.use('/api', postRouter);
-app.use('/api/user', userRouter)
+app.use('/api/user', userRouter);
+app.use('/api/image', imageRouter);
 
 
 // catch 404 and forward to error handler

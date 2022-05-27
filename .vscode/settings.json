@@ -1,4 +1,9 @@
 {
-  "cSpell.words": ["datetime"],
+  "cSpell.words": [
+    "CLIENTID",
+    "datetime",
+    "Imgur",
+    "originalname"
+  ],
   "liveServer.settings.port": 5501
 }
