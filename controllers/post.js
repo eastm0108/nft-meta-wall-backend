@@ -11,7 +11,7 @@ const post = {
     /** 找尋全部貼文 */
     async getPosts(req, res, next) {
         // 取得指定 userId
-        const { id: userId } = req.params;
+        const { id: targetUserId } = req.params;
         let { keyword, timeSort, limit = 10, page = 1 } = req.query;
 
         if (
@@ -48,8 +48,8 @@ const post = {
         const filter = keyword ? { content: new RegExp(`${keyword}`) } : {};
         const sort = timeSort === 'asc' || timeSort === 1 ? { createAt: 1 } : { createAt: -1 };
 
-        if (userId && mongoose.Types.ObjectId.isValid(userId)) {
-            filter.author = mongoose.Types.ObjectId(userId);
+        if (targetUserId && mongoose.Types.ObjectId.isValid(targetUserId)) {
+            filter.author = mongoose.Types.ObjectId(targetUserId);
         }
 
         page < 0 ? page = 1 : page;
@@ -106,7 +106,8 @@ const post = {
     },
     /** 新增單筆貼文 */
     async addPost(req, res, next) {
-        const { userId: author, content, image } = req.body;
+        const author = req.user._id;
+        const { content, image } = req.body;
 
         if (!author) {
             return next(appError(
@@ -145,8 +146,9 @@ const post = {
     },
     /** 新增指定貼文內留言 */
     async addPostComment(req, res, next) {
+        const userId = req.user._id;
         const { id } = req.params;
-        const { userId, comment } = req.body;
+        const { comment } = req.body;
 
         if (!userId && !mongoose.Types.ObjectId.isValid(userId)) {
             return next(appError(
@@ -197,7 +199,7 @@ const post = {
 
         const findPost = await Post.findById(id);
 
-        if (!findPost || findPost?.author) {
+        if (!findPost || !findPost?.author) {
             return next(appError(
                 HTTP_STATUS.BAD_REQUEST,
                 ERROR_MESSAGE('NOT_FOUND_ID_OR_DATA_ERROR', '此篇貼文已不存在'),
@@ -205,12 +207,12 @@ const post = {
         }
 
         // 檢查修改者是否是貼文作者
-        // if (req.user.id !== findPost.author) {
-        //     return next(appError(
-        //         HTTP_STATUS.BAD_REQUEST,
-        //         ERROR_MESSAGE('ERROR_REQUEST', '無權限修改貼文'),
-        //     ));
-        // }
+        if (req.user.id !== findPost.author.toString()) {
+            return next(appError(
+                HTTP_STATUS.BAD_REQUEST,
+                ERROR_MESSAGE('ERROR_REQUEST', '無權限修改貼文'),
+            ));
+        }
 
         const post = await Post.findByIdAndUpdate(id, { content: content.trim(), image }, { returnDocument: 'after' });
 
@@ -228,17 +230,13 @@ const post = {
     /** 修改指定貼文按讚數 */
     async updatePostLikes(req, res, next) {
         const { id } = req.params;
-        const { userId } = req.body;
+        const userId = req.user._id;
 
         const isLike = await Post.find({ _id: id, likes: { $in: [ userId ] } });
         let method = '';
 
         // 檢查裡面有沒有資料(收回讚/按讚)
-        if (isLike.length) {
-            method = '$pull';
-        } else {
-            method = '$push';
-        }
+        isLike.length ? method = '$pull' : method = '$push';
 
         const post = await Post.findByIdAndUpdate(id, { [method]: { likes: userId } }, { returnDocument: 'after' })
 
@@ -251,7 +249,7 @@ const post = {
             },
         });
 
-        await LikesPost.findOneAndUpdate({ userId: userId }, { [method]: { posts: id } }, { returnDocument: 'after' })
+        await LikesPost.findOneAndUpdate({ userId: userId }, { [method]: { posts: { post: id } }, }, { returnDocument: 'after' })
 
         successHandle(res, post, '更新成功')
     },

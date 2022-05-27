@@ -75,7 +75,13 @@ const errorHandle = (err, req, res, next) => {
         // Axios 錯誤
         err.isAxiosError && (err.name = 'AxiosError');
 
-        ErrorEvents[err.name](err, res) || ErrorEvents['Default'](err, res);
+        if (Object.keys(ErrorEvents).includes(err.name)) {
+            ErrorEvents[err.name](err, res)
+        } else {
+            ErrorEvents['Default'](err, res)
+        }
+
+        // ErrorEvents[err.name](err, res) || ErrorEvents['Default'](err, res);
     }
 };
 

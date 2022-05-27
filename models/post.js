@@ -29,7 +29,7 @@ const postsSchema = new mongoose.Schema(
             required: [true, 'Content 未填寫'],
         },
         likes: {
-            type: [String],
+            type: [{ type: mongoose.Schema.ObjectId, ref: 'user' }],
             default: []
         },
         comments: {
