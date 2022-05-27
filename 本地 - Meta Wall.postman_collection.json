@@ -1,266 +1,587 @@
 {
 	"info": {
-		"_postman_id": "cc5b9c4a-8cc5-4a41-aa58-3d373db29860",
+		"_postman_id": "0f2e0d84-0d34-4270-9b68-90ec4f0628ec",
 		"name": "本地 - Meta Wall",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18592520"
 	},
 	"item": [
 		{
-			"name": "取得所有貼文",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:3005/api/posts?keyword=1&timeSort=asc&limit=10&page=1",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"posts"
-					],
-					"query": [
-						{
-							"key": "keyword",
-							"value": "1"
+			"name": "貼文",
+			"item": [
+				{
+					"name": "取得指定 user 所有貼文",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzU4ODE5MywiZXhwIjoxNjU0MTkyOTkzfQ.Sx4I3pAlooTCcf6f5wCWkj2Og3J4BohkCF0vG2wLgig",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "timeSort",
-							"value": "asc"
-						},
-						{
-							"key": "limit",
-							"value": "10"
-						},
-						{
-							"key": "page",
-							"value": "1"
+						"url": {
+							"raw": "localhost:3005/api/posts/user/628fc03af680ed29550907e9?keyword=1&timeSort=asc&limit=10&page=1",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"posts",
+								"user",
+								"628fc03af680ed29550907e9"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "1"
+								},
+								{
+									"key": "timeSort",
+									"value": "asc"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "取得指定 user 所有貼文",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3005/api/posts/user/627fa403e11fff95efe0cde6?keyword=1&timeSort=asc&limit=10&page=1",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"posts",
-						"user",
-						"627fa403e11fff95efe0cde6"
-					],
-					"query": [
-						{
-							"key": "keyword",
-							"value": "1"
+				{
+					"name": "取得所有貼文",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzU4ODE5MywiZXhwIjoxNjU0MTkyOTkzfQ.Sx4I3pAlooTCcf6f5wCWkj2Og3J4BohkCF0vG2wLgig",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "timeSort",
-							"value": "asc"
+						"url": {
+							"raw": "localhost:3005/api/posts?keyword=1&timeSort=asc&limit=10&page=1",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "1"
+								},
+								{
+									"key": "timeSort",
+									"value": "asc"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增貼文",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzU4ODE5MywiZXhwIjoxNjU0MTkyOTkzfQ.Sx4I3pAlooTCcf6f5wCWkj2Og3J4BohkCF0vG2wLgig",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"test\",\n    \"image\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "limit",
-							"value": "10"
+						"url": {
+							"raw": "localhost:3005/api/post",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"post"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得指定 post 貼文",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzU4ODE5MywiZXhwIjoxNjU0MTkyOTkzfQ.Sx4I3pAlooTCcf6f5wCWkj2Og3J4BohkCF0vG2wLgig",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3005/api/post/6283b510aca2110b67a74160",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"post",
+								"6283b510aca2110b67a74160"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改指定貼文",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzU4ODE5MywiZXhwIjoxNjU0MTkyOTkzfQ.Sx4I3pAlooTCcf6f5wCWkj2Og3J4BohkCF0vG2wLgig",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"test-123\",\n    \"image\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "page",
-							"value": "1"
+						"url": {
+							"raw": "localhost:3005/api/post/628fc91ae48d97dd91317125",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"post",
+								"628fc91ae48d97dd91317125"
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "取得指定 post 貼文",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3005/api/post/6283b510aca2110b67a74160",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"post",
-						"6283b510aca2110b67a74160"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "新增貼文",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"userId\": \"627fa403e11fff95efe0cde6\",\n    \"content\": \"test\",\n    \"image\": \"\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3005/api/post",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"post"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "新增指定貼文內留言",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"userId\": \"627fa403e11fff95efe0cde6\",\n    \"comment\": \"test-comment\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "新增指定貼文內留言",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzU4ODE5MywiZXhwIjoxNjU0MTkyOTkzfQ.Sx4I3pAlooTCcf6f5wCWkj2Og3J4BohkCF0vG2wLgig",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"test-comment\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/api/post/6283b510aca2110b67a74160/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"post",
+								"6283b510aca2110b67a74160",
+								"comments"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3005/api/post/6283b4f8aca2110b67a7414e/comments",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"post",
-						"6283b4f8aca2110b67a7414e",
-						"comments"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "修改指定貼文",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"content\": \"test-123\",\n    \"image\": \"\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "修改指定貼文按讚數",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzU4ODE5MywiZXhwIjoxNjU0MTkyOTkzfQ.Sx4I3pAlooTCcf6f5wCWkj2Og3J4BohkCF0vG2wLgig",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/api/post/6283b512aca2110b67a74162/likes",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"post",
+								"6283b512aca2110b67a74162",
+								"likes"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3005/api/post/6283b4f8aca2110b67a7414e",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"post",
-						"6283b4f8aca2110b67a7414e"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "修改指定貼文按讚數",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"userId\": \"627fa403e11fff95efe0cde6\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "刪除指定貼文",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzU4ODE5MywiZXhwIjoxNjU0MTkyOTkzfQ.Sx4I3pAlooTCcf6f5wCWkj2Og3J4BohkCF0vG2wLgig",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3005/api/post/6283b4f8aca2110b67a7414e",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"post",
+								"6283b4f8aca2110b67a7414e"
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "localhost:3005/api/post/6283b4f8aca2110b67a7414e/likes",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"post",
-						"6283b4f8aca2110b67a7414e",
-						"likes"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "刪除指定貼文",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:3005/api/post/6283b4f8aca2110b67a7414e",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"post",
-						"6283b4f8aca2110b67a7414e"
-					]
+			"name": "使用者",
+			"item": [
+				{
+					"name": "使用者註冊",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"1234@com.tw\",\n    \"password\": \"a12345678\",\n    \"confirmPassword\": \"a12345678\",\n    \"name\": \"22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/api/user/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "使用者登入",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"1234@com.tw\",\n    \"password\": \"a12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/api/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新使用者追蹤名單",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzU4ODE5MywiZXhwIjoxNjU0MTkyOTkzfQ.Sx4I3pAlooTCcf6f5wCWkj2Og3J4BohkCF0vG2wLgig",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3005/api/user/follow/627fa403e11fff95efe0cde6",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"user",
+								"follow",
+								"627fa403e11fff95efe0cde6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新使用者資料",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzU4ODE5MywiZXhwIjoxNjU0MTkyOTkzfQ.Sx4I3pAlooTCcf6f5wCWkj2Og3J4BohkCF0vG2wLgig",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"11\",\n    \"avatar\": \"test\",\n    \"sex\": \"notKnown\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/api/user/profile",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"user",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新使用者密碼",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzU4ODE5MywiZXhwIjoxNjU0MTkyOTkzfQ.Sx4I3pAlooTCcf6f5wCWkj2Og3J4BohkCF0vG2wLgig",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"a12345678\",\n    \"confirmPassword\": \"a12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/api/user/updatePassword",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"user",
+								"updatePassword"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得使用者資訊",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzY0MzQzNSwiZXhwIjoxNjU0MjQ4MjM1fQ.XURw0IchTe9hv3A4vUaO2FoOXmoxzBt1bkLq74tjUn0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3005/api/user/profile/628fc03af680ed29550907e9",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"user",
+								"profile",
+								"628fc03af680ed29550907e9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得使用者追蹤名單",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzY0MzQzNSwiZXhwIjoxNjU0MjQ4MjM1fQ.XURw0IchTe9hv3A4vUaO2FoOXmoxzBt1bkLq74tjUn0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3005/api/user/following",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"user",
+								"following"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得使用者按讚名單",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzU4ODE5MywiZXhwIjoxNjU0MTkyOTkzfQ.Sx4I3pAlooTCcf6f5wCWkj2Og3J4BohkCF0vG2wLgig",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3005/api/user/getLikeList",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"user",
+								"getLikeList"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }

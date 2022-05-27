@@ -8,15 +8,15 @@ const { isAuth, verificationAuth } = require('../middleware/auth');
 // 取得使用者資訊
 router.get('/profile/:id', isAuth, checkUserId, handleErrorAsync(UsersControllers.getProfile));
 // 取得使用者追蹤名單
-router.get('/:id', isAuth, handleErrorAsync(UsersControllers.getUserFollow));
+router.get('/following', isAuth, handleErrorAsync(UsersControllers.getUserFollow));
+// 取得使用者按讚名單
+router.get('/getLikeList', isAuth, handleErrorAsync(UsersControllers.getUserLikeList));
 
 
 // 使用者註冊
 router.post('/register', handleErrorAsync(UsersControllers.createUser));
 // 使用者登入
 router.post('/login', handleErrorAsync(UsersControllers.login));
-// 檢查 email 是否用過
-router.post('/checkEmail', handleErrorAsync(UsersControllers.checkEmail));
 
 
 // 更新使用者追蹤名單
@@ -25,8 +25,8 @@ router.patch('/follow/:id', isAuth, checkUserId, handleErrorAsync(UsersControlle
 router.patch('/profile', isAuth, handleErrorAsync(UsersControllers.updateProfile));
 // 更新使用者密碼
 router.patch('/updatePassword', isAuth, handleErrorAsync(UsersControllers.updatePassword));
-// 重置使用者密碼
-router.patch('/resetPassword', verificationAuth, handleErrorAsync(UsersControllers.resetPassword));
+// 重置使用者密碼(未實作)
+// router.patch('/resetPassword', verificationAuth, handleErrorAsync(UsersControllers.resetPassword));
 
 
 module.exports = router;

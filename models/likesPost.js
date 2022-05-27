@@ -10,14 +10,22 @@ const likesPostSchema = new mongoose.Schema(
         posts: {
             type: [
                 {
-                    type: mongoose.Schema.ObjectId,
-                    ref: 'post'
+                    post: {
+                        type: mongoose.Schema.ObjectId,
+                        ref: 'posts',
+                    },
+                    createdAt: {
+                        type: Date,
+                        default: Date.now,
+                    },
                 }
             ],
             default: [],
         },
     },
-    { versionKey: false }
+    {
+        versionKey: false,
+    }
 )
 
 const LikesPost = mongoose.model('LikesPost', likesPostSchema)
