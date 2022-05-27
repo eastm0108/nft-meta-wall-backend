@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bd366400-9fe0-46b5-a3b4-80e2e49f6430",
+		"_postman_id": "8c3a4914-e6df-4246-9c14-671e87658777",
 		"name": "Heroku - Meta Wall",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "18592520"
@@ -469,7 +469,7 @@
 							"query": [
 								{
 									"key": "",
-									"value": null,
+									"value": "",
 									"disabled": true
 								}
 							]
@@ -608,6 +608,48 @@
 								"api",
 								"user",
 								"getLikeList"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "圖片",
+			"item": [
+				{
+					"name": "上傳圖片",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzU4ODE5MywiZXhwIjoxNjU0MTkyOTkzfQ.Sx4I3pAlooTCcf6f5wCWkj2Og3J4BohkCF0vG2wLgig",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imgae",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "https://hidden-waters-28649.herokuapp.com/api/image",
+							"protocol": "https",
+							"host": [
+								"hidden-waters-28649",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"image"
 							]
 						}
 					},

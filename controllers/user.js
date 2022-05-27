@@ -181,6 +181,13 @@ const user = {
         const { id: followId } = req.params;
         let method = '';
 
+        if (id === followId) {
+            return next(appError(
+                HTTP_STATUS.BAD_REQUEST,
+                ERROR_MESSAGE('ERROR_REQUEST', '不能追蹤自己'),
+            ));
+        }
+
         const userInfo = await User.findById(id);
 
         const check = userInfo.follow.find(item => item.id === followId);

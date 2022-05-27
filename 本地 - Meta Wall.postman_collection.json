@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0f2e0d84-0d34-4270-9b68-90ec4f0628ec",
+		"_postman_id": "0c53cc9b-75f2-4c19-b751-0e1af0ac0c86",
 		"name": "本地 - Meta Wall",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "18592520"
@@ -445,7 +445,7 @@
 							"query": [
 								{
 									"key": "",
-									"value": null,
+									"value": "",
 									"disabled": true
 								}
 							]
@@ -576,6 +576,49 @@
 								"api",
 								"user",
 								"getLikeList"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "圖片",
+			"item": [
+				{
+					"name": "上傳圖片",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMDNhZjY4MGVkMjk1NTA5MDdlOSIsImlzUmVzZXRQYXNzd29yZCI6ZmFsc2UsImlhdCI6MTY1MzU4ODE5MywiZXhwIjoxNjU0MTkyOTkzfQ.Sx4I3pAlooTCcf6f5wCWkj2Og3J4BohkCF0vG2wLgig",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imgae",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "127.0.0.1:3005/api/image",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"image"
 							]
 						}
 					},
