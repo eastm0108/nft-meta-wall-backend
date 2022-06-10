@@ -29,6 +29,13 @@ const app = express();
 // db connection
 require('./connection');
 
+
+// 設定 websocket
+const io = require('socket.io')();
+app.io = io;
+require('./socket/socket')(io);
+
+
 // 未捕捉到的 catch
 process.on("unhandledRejection", unhandledRejection);
 // 程式出現重大錯誤時
