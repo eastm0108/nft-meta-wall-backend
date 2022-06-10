@@ -80,8 +80,6 @@ const errorHandle = (err, req, res, next) => {
         } else {
             ErrorEvents['Default'](err, res)
         }
-
-        // ErrorEvents[err.name](err, res) || ErrorEvents['Default'](err, res);
     }
 };
 

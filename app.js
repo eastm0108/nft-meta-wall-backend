@@ -29,6 +29,11 @@ const app = express();
 // db connection
 require('./connection');
 
+// 未捕捉到的 catch
+process.on("unhandledRejection", unhandledRejection);
+// 程式出現重大錯誤時
+process.on("uncaughtException", uncaughtException);
+
 
 // middleware
 app.use(cors());
@@ -53,12 +58,6 @@ app.use('/api/image', imageRouter);
 app.use(error404);
 // error handler
 app.use(errorHandle);
-
-
-// 未捕捉到的 catch
-process.on("unhandledRejection", unhandledRejection);
-// 程式出現重大錯誤時
-process.on("uncaughtException", uncaughtException);
 
 
 module.exports = app;
