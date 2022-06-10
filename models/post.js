@@ -32,21 +32,20 @@ const postsSchema = new mongoose.Schema(
             type: [{ type: mongoose.Schema.ObjectId, ref: 'user' }],
             default: []
         },
-        comments: {
-            type: [
-                { 
-                    user: { type: mongoose.Schema.ObjectId, ref: 'user' },
-                    comment: String,
-                    createdAt: { type: Date, default: Date.now },
-                }
-            ],
-            default: [],
-        },
     },
     {
         versionKey: false,
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true },
     }
 );
+
+// 使用 virtual，怕 comments 超過陣列限制，量多處理
+postsSchema.virtual('comments', {
+    ref: 'comment',
+    foreignField: 'post',
+    localField: '_id',
+});
 
 const posts = mongoose.model('posts', postsSchema);
 

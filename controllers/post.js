@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Post = require('../models/post');
 const User = require('../models/user');
+const Comment = require('../models/comment');
 const LikesPost = require('../models/likesPost');
 const { HTTP_STATUS, ERROR_MESSAGE } = require('../constants/index');
 const { successHandle } = require('../service/index');
@@ -164,8 +165,12 @@ const post = {
             ));
         }
 
-        const postComment = { user: userId, comment };
-        const post = await Post.findByIdAndUpdate(id, { $push: { comments: postComment } }, { returnDocument: 'after' })
+        const newComment = await Comment.create({
+            post: id,
+            user: userId,
+            comment,
+        });
+        
 
         // 處理 comments 資料
         await Post.populate(post, {
@@ -176,7 +181,7 @@ const post = {
             },
         });
 
-        successHandle(res, post, '新增留言成功');
+        successHandle(res, newComment, '新增留言成功');
     },
     /** 修改指定貼文 */
     async updatePost(req, res, next) {

@@ -3,7 +3,8 @@
     "CLIENTID",
     "datetime",
     "Imgur",
-    "originalname"
+    "originalname",
+    "virtuals"
   ],
   "liveServer.settings.port": 5501
 }

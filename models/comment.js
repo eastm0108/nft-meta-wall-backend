@@ -9,12 +9,31 @@ const commentSchema = new mongoose.Schema(
         comment: {
             type: String,
         },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+        },
+        post: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'posts',
+            require: ['true', 'comment must belong to a post.'],
+        },
     },
     {
         versionKey: false,
     }
 );
 
+commentSchema.pre(/^find/, function (next) {
+    this.populate({
+        path: 'user',
+        select: 'id name avatar',
+    });
 
-const Comment = mongoose.model("comment", commentSchema);
-module.exports = Comment;
+    next();
+});
+
+
+const comment = mongoose.model('comment', commentSchema);
+
+module.exports = comment;
